@@ -1,0 +1,38 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Update repositories
+      yum:
+        update_cache: yes
+
+    - name: Install Apache (httpd)
+      yum:
+        name: httpd
+        state: present
+
+    - name: Install MariaDB Server (alternative to MySQL)
+      yum:
+        name: mariadb-server
+        state: present
+
+    - name: Install PHP and libs
+      yum:
+        name:
+          - php
+          - php-mysqlnd
+          - php-fpm
+        state: present
+
+    - name: Start Apache (httpd) Service
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+
+    - name: Start MariaDB Service
+      service:
+        name: mariadb
+        state: started
+        enabled: yes
+
