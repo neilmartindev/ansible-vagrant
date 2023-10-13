@@ -16,3 +16,13 @@
     - name: Display script output
       debug:
         var: script_output.stdout_lines
+
+    - name: Notify about machine reboot
+      debug:
+        msg: "The machine will be rebooted by Ansible."
+      when: script_output is succeeded
+
+    - name: Reboot machine
+      reboot:
+      become: yes
+      when: script_output is succeeded

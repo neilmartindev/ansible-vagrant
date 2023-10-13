@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
     end
 
     rocky9.vm.provision "ansible" do |ansible|
-      ansible.playbook = "install_lamp.yaml"
+      ansible.playbook = "playbooks/install_lamp.yaml"
       # additional ansible configurations for Rocky Linux 9 if needed
     end
   end
