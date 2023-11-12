@@ -1,4 +1,3 @@
 .vagrant/
 *.rsa
 *.pem
-private_key
